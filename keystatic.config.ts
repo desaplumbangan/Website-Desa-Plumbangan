@@ -1,16 +1,16 @@
 import { config, fields, singleton, collection } from '@keystatic/core'
-const isGitHubStorage = process.env.NEXT_PUBLIC_REPO_OWNER && process.env.NEXT_PUBLIC_REPO_NAME;
 
 export default config({
-  storage: isGitHubStorage
-    ? {
-        kind: 'github',
-        repo: {
-          owner: process.env.NEXT_PUBLIC_REPO_OWNER!,
-          name: process.env.NEXT_PUBLIC_REPO_NAME!,
+  storage:
+    process.env.NODE_ENV === 'development'
+      ? { kind: 'local' }
+      : {
+          kind: 'github',
+          repo: {
+            owner: 'desaplumbangan',
+            name: 'Website-Desa-Plumbangan',
+          },
         },
-      }
-    : { kind: 'local' },
 
   ui: {
     brand: { name: 'Admin Desa Plumbangan' },
