@@ -1,8 +1,14 @@
-const visiItems = [
+type VisiDesaSectionProps = {
+  visiList?: string[];
+};
+
+const defaultVisiItems = [
   "MEWUJUDKAN DESA PLUMBANGAN YANG SEJAHTERA, RELIGIUS, DAMAI, BERBUDAYA, MANDIRI DAN MAMPU BERDAYA SAING",
 ];
 
-export default function VisiDesaSection() {
+export default function VisiDesaSection({ visiList }: VisiDesaSectionProps) {
+  const items = visiList && visiList.length > 0 ? visiList : defaultVisiItems;
+
   return (
     <section className="bg-[#485935] px-6 py-16 sm:px-12">
       <div className="mx-auto max-w-4xl">
@@ -11,7 +17,7 @@ export default function VisiDesaSection() {
         </h2>
 
         <ul className="space-y-4 text-center">
-          {visiItems.map((text, index) => (
+          {items.map((text, index) => (
             <li
               key={index}
               className="rounded-full bg-white px-6 py-4 text-sm font-medium text-[#3F4E20] shadow-sm sm:px-8 sm:text-base"

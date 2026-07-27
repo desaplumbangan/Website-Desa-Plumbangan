@@ -2,13 +2,15 @@ import { config, fields, singleton, collection } from '@keystatic/core'
 
 export default config({
   storage:
-    process.env.NODE_ENV === 'development'
+    process.env.NODE_ENV === 'development' || !process.env.KEYSTATIC_GITHUB_CLIENT_ID
       ? { kind: 'local' }
       : {
           kind: 'github',
           repo: {
-            owner: 'desaplumbangan',
-            name: 'Website-Desa-Plumbangan',
+            owner:
+              process.env.NEXT_PUBLIC_REPO_OWNER || 'desaplumbangan',
+            name:
+              process.env.NEXT_PUBLIC_REPO_NAME || 'Website-Desa-Plumbangan',
           },
         },
 
@@ -96,6 +98,20 @@ export default config({
           {
             label: 'Detail Kependudukan (Dusun/Sekolah/Candi)',
             itemLabel: (props) => props.value || 'Item Detail',
+          }
+        ),
+        visi_list: fields.array(
+          fields.text({ label: 'Poin Visi' }),
+          {
+            label: 'Daftar Visi Desa',
+            itemLabel: (props) => props.value || 'Poin Visi',
+          }
+        ),
+        misi_list: fields.array(
+          fields.text({ label: 'Poin Misi', multiline: true }),
+          {
+            label: 'Daftar Misi Desa',
+            itemLabel: (props) => props.value || 'Poin Misi',
           }
         ),
       },

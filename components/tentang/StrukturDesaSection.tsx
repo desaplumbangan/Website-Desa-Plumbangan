@@ -122,36 +122,36 @@ const DEFAULT_KEPALA_DESA: Person = {
   name: "Yoyok Eko Iswahyudi, S.E.",
   role: "Kepala Desa",
   note: "Penata Tingkat I - NIP.",
-  photo: '/YOYOK.webp'
+  photo: '/images/struktur/yoyok.webp'
 };
 
 const DEFAULT_SEKRETARIS_DESA: Person = {
   name: "Nuryani",
   role: "Sekretaris Desa",
-  photo: '/NURYANI.webp'
+  photo: '/images/struktur/nuryani.webp'
 };
 
 const DEFAULT_KASI_ROW: Person[] = [
-  { name: "Irwan Wahyu Saputro", role: "Kasi Pelayanan", photo: '/RWAN.webp' },
-  { name: "Didin Mulantika, S.Sos.", role: "Kasi Pemerintahan", photo: '/DIDIN.webp'},
-  { name: "Nur Hadi Asy'ari, S.Pd.I.", role: "Kasi Kesejahteraan", photo: '/NURHADI.webp'},
+  { name: "Irwan Wahyu Saputro", role: "Kasi Pelayanan", photo: '/images/struktur/rwan.webp' },
+  { name: "Didin Mulantika, S.Sos.", role: "Kasi Pemerintahan", photo: '/images/struktur/didin.webp'},
+  { name: "Nur Hadi Asy'ari, S.Pd.I.", role: "Kasi Kesejahteraan", photo: '/images/struktur/nurhadi.webp'},
 ];
 
 const DEFAULT_KAUR_ROW: Person[] = [
-  { name: "Elisa Wahyuniati", role: "Kaur TU & Umum" , photo: '/ELISA.webp'},
-  { name: "Heru Irawan", role: "Kaur Keuangan", photo : '/HERU.webp' },
-  { name: "Septiana Heru Santi, S.Ak", role: "Kaur Perencanaan", photo: '/SEPTIANA.webp' },
+  { name: "Elisa Wahyuniati", role: "Kaur TU & Umum" , photo: '/images/struktur/elisa.webp'},
+  { name: "Heru Irawan", role: "Kaur Keuangan", photo : '/images/struktur/heru.webp' },
+  { name: "Septiana Heru Santi, S.Ak", role: "Kaur Perencanaan", photo: '/images/struktur/septiana.webp' },
 ];
 
 const DEFAULT_KAMITUWO_ROW: Person[] = [
-  { name: "Irwan Wahyu Saputro", role: "Kamituwo Plumbangan", photo: '/IRWAN.webp'},
+  { name: "Irwan Wahyu Saputro", role: "Kamituwo Plumbangan", photo: '/images/struktur/irwan.webp'},
   { name: "Agus Riadi", role: "Kamituwo Barek" },
-  { name: "Suryadi", role: "Kamituwo Precet", photo: '/SURYADI.webp' },
+  { name: "Suryadi", role: "Kamituwo Precet", photo: '/images/struktur/suryadi.webp' },
   { name: "Bambang Prasetyo", role: "Kamituwo Pagak" },
 ];
 
 const DEFAULT_KARYAWAN_ROW: Person[] = [
-  { name: "Hernindya Annisa Rahayu, S.Pd", role: "Karyawan Desa", photo: '/HERNINDYA.webp' },
+  { name: "Hernindya Annisa Rahayu, S.Pd", role: "Karyawan Desa", photo: '/images/struktur/hernindya.webp' },
   { name: "Dwi Agus Ningtyas", role: "Karyawan Desa" },
 ];
 

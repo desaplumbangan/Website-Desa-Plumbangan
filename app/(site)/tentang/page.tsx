@@ -83,6 +83,12 @@ export default async function Tentang() {
     ? [tentang.deskripsi_sejarah]
     : undefined;
 
+  const visiList = (tentang?.visi_list || [])
+    .filter((v): v is string => typeof v === "string" && Boolean(v));
+
+  const misiList = (tentang?.misi_list || [])
+    .filter((m): m is string => typeof m === "string" && Boolean(m));
+
   return (
     <main>
       <TentangDesaSection
@@ -91,8 +97,8 @@ export default async function Tentang() {
         paragraphs={deskripsiSejarah}
         imageSrc={tentang?.foto_sejarah ?? undefined}
       />
-      <VisiDesaSection />
-      <MisiDesaSection />
+      <VisiDesaSection visiList={visiList.length > 0 ? visiList : undefined} />
+      <MisiDesaSection misiList={misiList.length > 0 ? misiList : undefined} />
       <DataKependudukanSection
         icon={
           <Image

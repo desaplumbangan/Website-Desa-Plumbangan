@@ -14,7 +14,7 @@ const defaultParagraphs = [
 
 export default function TentangDesaSection({
   villageName = "Plumbangan",
-  imageSrc = '/downviewcandi.webp',
+  imageSrc = '/images/tentang/downviewcandi.webp',
   backgroundImage,
   heading = "Sejarah Desa",
   paragraphs = defaultParagraphs,

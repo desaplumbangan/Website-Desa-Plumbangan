@@ -1,46 +1,46 @@
 kepala_desa:
   nama: Yoyok Eko Iswahyudi, S.E.
   role: Kepala Desa
-  note: Penata Tingkat I - NIP.
-  foto: /YOYOK.webp
+  note: Penata Tingkat I
+  foto: /images/struktur/kepala_desa/foto.webp
 sekretaris_desa:
   nama: Nuryani
   role: Sekretaris Desa
-  foto: /NURYANI.webp
+  foto: /images/struktur/sekretaris_desa/foto.webp
 kasi_list:
   - nama: Irwan Wahyu Saputro
     role: Kasi Pelayanan
-    foto: /RWAN.webp
+    foto: /images/struktur/kasi_list/0/foto.webp
   - nama: Didin Mulantika, S.Sos.
     role: Kasi Pemerintahan
-    foto: /DIDIN.webp
+    foto: /images/struktur/kasi_list/1/foto.webp
   - nama: Nur Hadi Asy'ari, S.Pd.I.
     role: Kasi Kesejahteraan
-    foto: /NURHADI.webp
+    foto: /images/struktur/kasi_list/2/foto.webp
 kaur_list:
   - nama: Elisa Wahyuniati
     role: Kaur TU & Umum
-    foto: /ELISA.webp
+    foto: /images/struktur/kaur_list/0/foto.webp
   - nama: Heru Irawan
     role: Kaur Keuangan
-    foto: /HERU.webp
+    foto: /images/struktur/kaur_list/1/foto.webp
   - nama: Septiana Heru Santi, S.Ak
     role: Kaur Perencanaan
-    foto: /SEPTIANA.webp
+    foto: /images/struktur/kaur_list/2/foto.webp
 kamituwo_list:
   - nama: Irwan Wahyu Saputro
     role: Kamituwo Plumbangan
-    foto: /IRWAN.webp
+    foto: /images/struktur/kamituwo_list/0/foto.webp
   - nama: Agus Riadi
     role: Kamituwo Barek
   - nama: Suryadi
     role: Kamituwo Precet
-    foto: /SURYADI.webp
+    foto: /images/struktur/kamituwo_list/2/foto.webp
   - nama: Bambang Prasetyo
     role: Kamituwo Pagak
 karyawan_list:
   - nama: Hernindya Annisa Rahayu, S.Pd
     role: Karyawan Desa
-    foto: /HERNINDYA.webp
+    foto: /images/struktur/karyawan_list/0/foto.webp
   - nama: Dwi Agus Ningtyas
     role: Karyawan Desa
