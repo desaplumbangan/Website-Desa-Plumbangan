@@ -2,19 +2,18 @@ import { config, fields, singleton, collection } from '@keystatic/core'
 
 export default config({
   storage:
-    process.env.NODE_ENV === 'production' && process.env.KEYSTATIC_GITHUB_CLIENT_ID
-      ? {
+    process.env.NODE_ENV === 'development'
+      ? { kind: 'local' }
+      : {
           kind: 'github',
           repo: {
             owner: 'desaplumbangan',
             name: 'Website-Desa-Plumbangan',
           },
-        }
-      : { kind: 'local' },
+        },
 
   ui: {
     brand: { name: 'Admin Desa Plumbangan' },
-    // 💡 MENYATUKAN MENU SIDEBAR ADMIN KEYSTATIC
     navigation: {
       'Kelola Konten Website': [
         'beranda',
