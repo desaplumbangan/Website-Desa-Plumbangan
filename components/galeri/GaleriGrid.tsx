@@ -33,6 +33,7 @@ export default function GaleriGrid({
             src={highlightImage}
             alt="Galeri Highlight"
             fill
+            sizes="(max-width: 768px) 100vw, 900px"
             className="object-cover"
             onError={() => setHighlightError(true)}
           />
@@ -44,11 +45,17 @@ export default function GaleriGrid({
       </div>
 
       {/* Flex Wrap / Grid Card Tambahan */}
-      <div className="flex flex-wrap justify-center gap-3 sm:gap-5">
-        {galleryList.map((src, idx) => (
-          <GaleriCard key={idx} src={src} index={idx + 1} />
-        ))}
-      </div>
+      {galleryList && galleryList.length > 0 ? (
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-5">
+          {galleryList.map((src, idx) => (
+            <GaleriCard key={idx} src={src} index={idx + 1} />
+          ))}
+        </div>
+      ) : (
+        <div className="py-8 text-center text-slate-500 text-sm font-medium">
+          Belum ada foto galeri tambahan yang ditambahkan.
+        </div>
+      )}
     </section>
   );
 }
@@ -63,6 +70,7 @@ function GaleriCard({ src, index }: { src: string; index: number }) {
           src={src}
           alt={`Galeri ${index}`}
           fill
+          sizes="(max-width: 768px) 50vw, 300px"
           className="object-cover"
           onError={() => setHasError(true)}
         />

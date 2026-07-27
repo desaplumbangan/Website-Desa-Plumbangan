@@ -18,18 +18,23 @@ export type UMKMItem = {
   galeri?: string[];
 };
 
-export function getWaUrl(phone?: string): string | null {
+export function sanitizePhoneNumber(phone?: string): string | null {
   if (!phone || !phone.trim()) return null;
   const cleaned = phone.replace(/[^0-9]/g, "");
   if (!cleaned) return null;
 
   if (cleaned.startsWith("0")) {
-    return `https://wa.me/62${cleaned.slice(1)}`;
+    return `62${cleaned.slice(1)}`;
   } else if (cleaned.startsWith("62")) {
-    return `https://wa.me/${cleaned}`;
+    return cleaned;
   } else {
-    return `https://wa.me/${cleaned}`;
+    return `62${cleaned}`;
   }
+}
+
+export function getWaUrl(phone?: string): string | null {
+  const sanitized = sanitizePhoneNumber(phone);
+  return sanitized ? `https://wa.me/${sanitized}` : null;
 }
 
 export function getCleanSocialLabel(url?: string, defaultLabel?: string): string {

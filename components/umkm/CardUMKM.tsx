@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getWaUrl } from "./umkmData";
 
 type CardUMKMProps = {
   nama: string;
@@ -15,6 +16,8 @@ export default function CardUMKM({
   kontak,
   gambarUrl,
 }: CardUMKMProps) {
+  const waUrl = getWaUrl(kontak);
+
   return (
     <div className="group overflow-hidden rounded-2xl bg-white shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-xl border border-slate-100">
       <div className="relative h-48 w-full bg-[#CADBB7]">
@@ -23,6 +26,7 @@ export default function CardUMKM({
             src={gambarUrl}
             alt={nama}
             fill
+            sizes="(max-width: 768px) 100vw, 400px"
             className="object-cover transition duration-300 group-hover:scale-105"
           />
         ) : (
@@ -40,7 +44,18 @@ export default function CardUMKM({
         {kontak && (
           <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
             <span>Hubungi:</span>
-            <span className="font-semibold text-[#3F4E20]">{kontak}</span>
+            {waUrl ? (
+              <a
+                href={waUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-emerald-600 hover:underline"
+              >
+                {kontak}
+              </a>
+            ) : (
+              <span className="font-semibold text-[#3F4E20]">{kontak}</span>
+            )}
           </div>
         )}
       </div>

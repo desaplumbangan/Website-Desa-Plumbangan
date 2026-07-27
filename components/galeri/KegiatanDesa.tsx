@@ -55,12 +55,17 @@ export default function KegiatanDesa({ items }: KegiatanDesaProps) {
         Kegiatan Desa
       </h2>
 
-      {/* Flex Wrap Layout: 2 Kolom di Mobile, 3 Kolom di Desktop dengan Centering Otomatis */}
-      <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
-        {list.map((item, idx) => (
-          <KegiatanCard key={item.id ?? idx} item={item} />
-        ))}
-      </div>
+      {list && list.length > 0 ? (
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
+          {list.map((item, idx) => (
+            <KegiatanCard key={item.id ?? idx} item={item} />
+          ))}
+        </div>
+      ) : (
+        <div className="py-8 text-center text-slate-500 text-sm font-medium">
+          Belum ada kegiatan desa yang ditambahkan.
+        </div>
+      )}
     </section>
   );
 }
@@ -77,6 +82,7 @@ function KegiatanCard({ item }: { item: KegiatanItem }) {
             src={item.foto}
             alt="Foto Kegiatan"
             fill
+            sizes="(max-width: 768px) 50vw, 350px"
             className="object-cover"
             onError={() => setHasError(true)}
           />

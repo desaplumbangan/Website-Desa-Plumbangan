@@ -31,14 +31,22 @@ export default function UMKMView({ umkmList }: UMKMViewProps) {
 
       {/* UMKM List Sections (Alternating Dark & Light themes) */}
       <section className="w-full">
-        {itemsToDisplay.map((item, index) => (
-          <UMKMCardSection
-            key={item.id}
-            item={item}
-            index={index}
-            onSelect={(selected) => setSelectedUMKM(selected)}
-          />
-        ))}
+        {itemsToDisplay && itemsToDisplay.length > 0 ? (
+          itemsToDisplay.map((item, index) => (
+            <UMKMCardSection
+              key={item.id || index}
+              item={item}
+              index={index}
+              onSelect={(selected) => setSelectedUMKM(selected)}
+            />
+          ))
+        ) : (
+          <div className="py-20 text-center px-4">
+            <p className="text-base sm:text-lg font-medium text-slate-500">
+              Belum ada data UMKM yang ditambahkan.
+            </p>
+          </div>
+        )}
       </section>
 
       {/* Bottom Batik Spacing Section above Footer */}

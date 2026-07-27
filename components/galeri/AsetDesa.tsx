@@ -25,22 +25,29 @@ export default function AsetDesa({ items }: AsetDesaProps) {
         Aset Desa
       </h2>
 
-      <div className="w-full max-w-4xl flex flex-col gap-6">
-        {assetList.map((item, idx) => (
-          <div
-            key={idx}
-            className="w-full h-[280px] sm:h-[450px] md:h-[550px] relative rounded-[28px] md:rounded-[35px] bg-[#3d4e2a] overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
-          >
-            <Image
-              src={item.foto}
-              alt={item.nama || `Aset Desa ${idx + 1}`}
-              fill
-              className="object-cover"
-              priority={idx === 0}
-            />
-          </div>
-        ))}
-      </div>
+      {assetList && assetList.length > 0 ? (
+        <div className="w-full max-w-4xl flex flex-col gap-6">
+          {assetList.map((item, idx) => (
+            <div
+              key={idx}
+              className="w-full h-[280px] sm:h-[450px] md:h-[550px] relative rounded-[28px] md:rounded-[35px] bg-[#3d4e2a] overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
+            >
+              <Image
+                src={item.foto}
+                alt={item.nama || `Aset Desa ${idx + 1}`}
+                fill
+                sizes="(max-width: 768px) 100vw, 900px"
+                className="object-cover"
+                priority={idx === 0}
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="py-8 text-center text-slate-500 text-sm font-medium">
+          Belum ada data aset desa yang ditambahkan.
+        </div>
+      )}
     </section>
   );
 }

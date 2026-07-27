@@ -5,16 +5,12 @@ export default config({
     process.env.NODE_ENV === 'production' && process.env.KEYSTATIC_GITHUB_CLIENT_ID
       ? {
           kind: 'github',
-          repo: {
-            owner: 'desaplumbangan',
-            name: 'Website-Desa-Plumbangan',
-          },
+          repo: 'desaplumbangan/Website-Desa-Plumbangan',
         }
       : { kind: 'local' },
 
   ui: {
     brand: { name: 'Admin Desa Plumbangan' },
-    // 💡 MENYATUKAN MENU SIDEBAR ADMIN KEYSTATIC
     navigation: {
       'Kelola Konten Website': [
         'beranda',
