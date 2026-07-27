@@ -1,6 +1,7 @@
 import { config, fields, singleton, collection } from '@keystatic/core'
 
 export default config({
+<<<<<<< HEAD
   storage: {
     kind: 'github',
     repo: {
@@ -8,6 +9,18 @@ export default config({
       name: process.env.NEXT_PUBLIC_REPO_NAME!,
     },
   },
+=======
+  storage:
+    process.env.NODE_ENV === 'production' && process.env.KEYSTATIC_GITHUB_CLIENT_ID
+      ? {
+          kind: 'github',
+          repo: {
+            owner: 'desaplumbangan',
+            name: 'Website-Desa-Plumbangan',
+          },
+        }
+      : { kind: 'local' },
+>>>>>>> fcc0628d7912048eafff2a98c10e2735ed0d8dcd
 
   ui: {
     brand: { name: 'Admin Desa Plumbangan' },
@@ -18,7 +31,7 @@ export default config({
         'tentang',
         'struktur',
         'galeri',
-        'umkm', // 👈 UMKM dimasukkan ke grup yang sama dengan Singleton!
+        'umkm',
       ],
     },
   },

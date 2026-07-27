@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { createReader } from "@keystatic/core/reader";
 import keystaticConfig from "@/keystatic.config";
 import Image from "next/image";
@@ -6,6 +7,18 @@ import AsetDesa from "@/components/galeri/AsetDesa";
 import KegiatanDesa, { KegiatanItem } from "@/components/galeri/KegiatanDesa";
 import GaleriGrid from "@/components/galeri/GaleriGrid";
 import MobileBottomNav from "@/components/ui/MobileBottomNav"; 
+
+export const metadata: Metadata = {
+  title: "Galeri Desa Plumbangan - Aset, Kegiatan & Pesona Desa",
+  description:
+    "Dokumentasi foto aset desa, kegiatan masyarakat, dan keindahan alam Desa Plumbangan, Kecamatan Doko, Kabupaten Blitar.",
+  openGraph: {
+    title: "Galeri Desa Plumbangan - Aset, Kegiatan & Pesona Desa",
+    description:
+      "Dokumentasi foto aset desa, kegiatan masyarakat, dan keindahan alam Desa Plumbangan.",
+    images: [{ url: "/downviewcandi.webp" }, { url: "/logo-desa.png" }],
+  },
+};
 
 const reader = createReader(process.cwd(), keystaticConfig);
 
