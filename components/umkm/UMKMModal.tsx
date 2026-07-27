@@ -54,6 +54,22 @@ export default function UMKMModal({ item, onClose }: UMKMModalProps) {
     { key: "tokopedia", name: "Tokopedia", url: item.tokopedia, Icon: TokopediaIcon, bg: "bg-emerald-50 text-emerald-600 border-emerald-200 hover:bg-emerald-600 hover:text-white" },
   ].filter((s) => s.url && s.url.trim() !== "");
 
+  // Collect all non-empty images dynamically
+  const allPhotos: string[] = [];
+  if (item.gambarUtama && item.gambarUtama.trim() !== "") {
+    allPhotos.push(item.gambarUtama.trim());
+  }
+  if (item.galeri && item.galeri.length > 0) {
+    item.galeri.forEach((g) => {
+      if (g && g.trim() !== "" && !allPhotos.includes(g.trim())) {
+        allPhotos.push(g.trim());
+      }
+    });
+  }
+
+  const primaryPhoto = allPhotos[0] || null;
+  const secondaryPhotos = allPhotos.slice(1);
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm transition-opacity duration-300">
       {/* Backdrop click listener */}
@@ -64,7 +80,7 @@ export default function UMKMModal({ item, onClose }: UMKMModalProps) {
       />
 
       {/* Modal Container Card */}
-      <div className="relative z-10 w-full max-w-lg md:max-w-4xl max-h-[85dvh] md:max-h-[90vh] overflow-y-auto overflow-x-hidden rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-slate-200 text-slate-800 transition-all duration-300">
+      <div className="relative z-10 w-full max-w-lg md:max-w-4xl max-h-[85dvh] md:max-h-[90vh] overflow-y-auto overflow-x-hidden rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-slate-200 text-slate-800 animate-fade-in-scale transition-all duration-300">
         {/* Subtle Batik Background Layer */}
         <div
           className="absolute inset-0 bg-cover bg-center opacity-10 pointer-events-none z-0"
@@ -95,46 +111,55 @@ export default function UMKMModal({ item, onClose }: UMKMModalProps) {
             {/* Images Section */}
             <div className="w-full space-y-3 sm:space-y-4">
               {/* Main Image Box */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#3F4E20] shadow-inner">
-                {item.gambarUtama ? (
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#3F4E20]/10 shadow-inner border border-slate-200">
+                {primaryPhoto ? (
                   <Image
-                    src={item.gambarUtama}
+                    src={primaryPhoto}
                     alt={item.nama}
                     fill
+                    sizes="(max-width: 768px) 100vw, 500px"
                     className="object-cover"
                   />
                 ) : (
-                  <div className="flex h-full w-full items-center justify-center text-white/30 font-medium text-sm">
-                    Foto Utama UMKM
+                  <div className="flex h-full w-full items-center justify-center text-[#3F4E20]/40 font-medium text-sm">
+                    Foto UMKM
                   </div>
                 )}
               </div>
 
-              {/* 3 Thumbnail Images Box */}
-              <div className="grid grid-cols-3 gap-3">
-                {[0, 1, 2].map((idx) => {
-                  const thumbSrc = item.galeri?.[idx];
-                  return (
+              {/* Dynamic Secondary Gallery Images (no empty placeholders) */}
+              {secondaryPhotos.length > 0 && (
+                <div
+                  className={`grid gap-3 ${
+                    secondaryPhotos.length === 1
+                      ? "grid-cols-1"
+                      : secondaryPhotos.length === 2
+                      ? "grid-cols-2"
+                      : "grid-cols-3"
+                  }`}
+                >
+                  {secondaryPhotos.map((photoSrc, idx) => (
                     <div
                       key={idx}
-                      className="relative aspect-square w-full overflow-hidden rounded-xl bg-[#3F4E20] shadow-sm"
+                      className={`relative w-full overflow-hidden rounded-xl bg-[#3F4E20]/10 shadow-sm border border-slate-200 ${
+                        secondaryPhotos.length === 1
+                          ? "aspect-[16/10] sm:aspect-[4/3]"
+                          : secondaryPhotos.length === 2
+                          ? "aspect-[4/3]"
+                          : "aspect-square"
+                      }`}
                     >
-                      {thumbSrc ? (
-                        <Image
-                          src={thumbSrc}
-                          alt={`${item.nama} thumbnail ${idx + 1}`}
-                          fill
-                          className="object-cover"
-                        />
-                      ) : (
-                        <div className="flex h-full w-full items-center justify-center text-white/20 text-xs">
-                          Foto {idx + 1}
-                        </div>
-                      )}
+                      <Image
+                        src={photoSrc}
+                        alt={`${item.nama} foto ${idx + 2}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 300px"
+                        className="object-cover hover:scale-105 transition-transform duration-300"
+                      />
                     </div>
-                  );
-                })}
-              </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Details & Information Section */}

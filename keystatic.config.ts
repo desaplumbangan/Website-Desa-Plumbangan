@@ -2,15 +2,15 @@ import { config, fields, singleton, collection } from '@keystatic/core'
 
 export default config({
   storage:
-    process.env.NODE_ENV === 'development'
-      ? { kind: 'local' }
-      : {
+    process.env.NODE_ENV === 'production' && process.env.KEYSTATIC_GITHUB_CLIENT_ID
+      ? {
           kind: 'github',
           repo: {
             owner: 'desaplumbangan',
             name: 'Website-Desa-Plumbangan',
           },
-        },
+        }
+      : { kind: 'local' },
 
   ui: {
     brand: { name: 'Admin Desa Plumbangan' },
@@ -21,7 +21,7 @@ export default config({
         'tentang',
         'struktur',
         'galeri',
-        'umkm', // 👈 UMKM dimasukkan ke grup yang sama dengan Singleton!
+        'umkm',
       ],
     },
   },

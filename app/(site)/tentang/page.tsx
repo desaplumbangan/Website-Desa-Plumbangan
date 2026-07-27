@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { createReader } from "@keystatic/core/reader";
 import keystaticConfig from "@/keystatic.config";
 import DataKependudukanSection from "@/components/tentang/DataKependudukanSection";
@@ -6,6 +7,18 @@ import StrukturDesaSection, { Person } from "@/components/tentang/StrukturDesaSe
 import TentangDesaSection from "@/components/tentang/TentangDesaSection";
 import VisiDesaSection from "@/components/tentang/VisiDesaSection";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Tentang Desa Plumbangan - Sejarah & Struktur Organisasi",
+  description:
+    "Sejarah Desa Plumbangan sejak era Kerajaan Kediri, profil kependudukan, visi misi, serta struktur organisasi Pemerintah Desa Plumbangan, Kec. Doko, Kab. Blitar.",
+  openGraph: {
+    title: "Tentang Desa Plumbangan - Sejarah & Struktur Organisasi",
+    description:
+      "Sejarah Desa Plumbangan sejak era Kerajaan Kediri, profil kependudukan, visi misi, serta struktur organisasi Pemerintah Desa Plumbangan.",
+    images: [{ url: "/logo-desa.png" }],
+  },
+};
 
 const reader = createReader(process.cwd(), keystaticConfig);
 

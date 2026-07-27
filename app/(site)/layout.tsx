@@ -10,7 +10,7 @@ export default function SiteLayout({
   return (
     <>
       <Navbar />
-      <main>{children}</main>
+      <main className="animate-fade-in">{children}</main>
       <Footer />
       <MobileBottomNav />
     </>
