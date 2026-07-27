@@ -2,15 +2,13 @@ import { config, fields, singleton, collection } from '@keystatic/core'
 
 export default config({
   storage:
-    process.env.NODE_ENV === 'development' || !process.env.KEYSTATIC_GITHUB_CLIENT_ID
+    process.env.NODE_ENV === 'development'
       ? { kind: 'local' }
       : {
           kind: 'github',
           repo: {
-            owner:
-              process.env.NEXT_PUBLIC_REPO_OWNER || 'desaplumbangan',
-            name:
-              process.env.NEXT_PUBLIC_REPO_NAME || 'Website-Desa-Plumbangan',
+            owner: process.env.NEXT_PUBLIC_REPO_OWNER || 'desaplumbangan',
+            name: process.env.NEXT_PUBLIC_REPO_NAME || 'Website-Desa-Plumbangan',
           },
         },
 
